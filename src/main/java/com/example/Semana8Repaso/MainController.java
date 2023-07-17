@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.List;
-import java.util.Map;
 import java.lang.String;
-import java.lang.Object;
 
 @Controller	// This means that this class is a Controller
 @RequestMapping(path="/")
@@ -35,7 +32,7 @@ public class MainController {
         return "Diego Ñontol Huiman";
     }
 
-	@PostMapping(path="/nuevo")
+	@PostMapping(path="/api/curso/nuevo")
 	public @ResponseBody String nuevo (@RequestParam String nombre, @RequestParam Integer creditos) {
         Curso n = new Curso();
 		n.setNombre(nombre);
@@ -44,7 +41,7 @@ public class MainController {
 		return "Curso Guardado !";
 	}
 
-	@DeleteMapping(path="/eliminar")
+	@DeleteMapping(path="/api/curso/eliminar")
 	public @ResponseBody String eliminar (@RequestParam Integer id) {
 		Curso n = new Curso();
 		n.setId(id);
@@ -52,7 +49,7 @@ public class MainController {
 		return "Curso Eliminado !";
 	}
 
-	@GetMapping(path="/listar")
+	@GetMapping(path="/api/curso/listar")
 	public @ResponseBody Iterable<Curso> listar() {
 		return repository.findAll();
 	}
